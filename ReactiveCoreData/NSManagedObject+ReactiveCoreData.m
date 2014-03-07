@@ -15,7 +15,7 @@
 
 + (RACSignal *)findAll;
 {
-    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+    return [RACSignal create:^RACDisposable *(id <RACSubscriber> subscriber) {
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:self.entityName];
         [subscriber sendNext:fetchRequest];
         [subscriber sendCompleted];

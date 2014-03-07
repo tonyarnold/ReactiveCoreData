@@ -132,7 +132,7 @@
 
 - (RACSignal *)saveContext;
 {
-    return [[RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+    return [[RACSignal create:^RACDisposable *(id <RACSubscriber> subscriber) {
         return [self
             subscribeNext:^(id x) {
                 NSError *error = nil;

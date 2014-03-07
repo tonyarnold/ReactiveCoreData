@@ -19,7 +19,7 @@ static NSString const *kRCDMainManagedObjectContext = @"kRCDMainManagedObjectCon
 
 - (RACSignal *)executeRequest:(NSFetchRequest *)request
 {
-    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+    return [RACSignal create:^RACDisposable *(id <RACSubscriber> subscriber) {
         NSError *error = nil;
         NSArray *result = [self executeFetchRequest:request error:&error];
         if (error) {
@@ -34,7 +34,7 @@ static NSString const *kRCDMainManagedObjectContext = @"kRCDMainManagedObjectCon
 
 - (RACSignal *)countRequest:(NSFetchRequest *)request
 {
-    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+    return [RACSignal create:^RACDisposable *(id <RACSubscriber> subscriber) {
         NSError *error = nil;
         NSUInteger count = [self countForFetchRequest:request error:&error];
         if (error) {
@@ -136,7 +136,7 @@ static NSString const *kRCDMainManagedObjectContext = @"kRCDMainManagedObjectCon
 {
     NSManagedObjectContext *oldContext = [NSManagedObjectContext currentContext];
     [NSManagedObjectContext setCurrentContext:self];
-    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+    return [RACSignal create:^RACDisposable *(id <RACSubscriber> subscriber) {
         [subscriber sendNext:self];
         [subscriber sendCompleted];
         [NSManagedObjectContext setCurrentContext:oldContext];
